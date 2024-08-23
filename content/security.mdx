@@ -1,0 +1,256 @@
+import { Table, Button } from "flowbite-react";
+/* import { SvgLoader } from "react-svgmt"; */
+
+# Security Overview
+
+Aerodrome Finance inherits the contract architecture and full security
+maintenance from Velodrome V2. Velodrome V2 has been audited and runs a
+bug-bounty program.
+
+To review the current state of the smart-contracts and the bug bounty program,
+please refer to the Velodrome security page.
+
+<Button
+  href="https://velodrome.finance/security"
+  className="my-8 w-1/2 m-auto"
+  size="sm"
+  color="gray"
+>
+  <strong>Velodrome on Security</strong>
+</Button>
+
+<br />
+
+For security reports, please reach out to us on <a className="text-primary
+underline hover:no-underline underline-offset-2"
+href="https://discord.gg/aerodrome">Discord</a>, or to the contacts provided on
+our Github page.
+
+<div id="emergency"></div>
+<br />
+## Emergency Council, Foundations and Public Goods Fund
+
+To support the health of the protocol and ecosystem, there is a Council
+consisting of members from the Aerodrome team and prominent figures from within
+the Optimism and Base community.
+
+The Council can be spawned in case of emergency situations or by passing
+a governance proposal that requires the council's help to be executed.
+
+The Council address is at **`0x99249b10593fCa1Ae9DAE6D4819F1A6dae5C013D`** and it:
+
+- can set a new `emergencyCouncil`
+- can kill a gauge
+- can revive a gauge
+- can set a custom name or symbol for a pool
+- can activate or deactivate (m)veNFTs (superseded by the governance once enabled)
+
+Important multisigs:
+
+- `0xBDE0c70BdC242577c52dFAD53389F82fd149EA5a` - Aerodrome Foundation and Incentives
+- `0x834C0DA026d5F933C2c18Fa9F8Ba7f1f792fDa52` - Public Goods Fund
+
+<div id="contracts"></div>
+<br />
+## Contract Addresses
+
+<br />
+
+<Table striped>
+  <Table.Head className="bg-primary text-white dark:bg-50">
+    <Table.HeadCell>Contract Name</Table.HeadCell>
+    <Table.HeadCell>Address</Table.HeadCell>
+  </Table.Head>
+  <Table.Body className="font-mono">
+    <Table.Row>
+      <Table.Cell>AERO</Table.Cell>
+      <Table.Cell>
+        [0x940181a94A35A4569E4529A3CDfB74e38FD98631](https://basescan.org/address/0x940181a94A35A4569E4529A3CDfB74e38FD98631)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>AirdropDistributor</Table.Cell>
+      <Table.Cell>
+        [0xE4c69af018B2EA9e575026c0472B6531A2bC382F](https://basescan.org/address/0xE4c69af018B2EA9e575026c0472B6531A2bC382F)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>ArtProxy</Table.Cell>
+      <Table.Cell>
+        [0xE9992487b2EE03b7a91241695A58E0ef3654643E](https://basescan.org/address/0xE9992487b2EE03b7a91241695A58E0ef3654643E)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>FactoryRegistry</Table.Cell>
+      <Table.Cell>
+        [0x5C3F18F06CC09CA1910767A34a20F771039E37C0](https://basescan.org/address/0x5C3F18F06CC09CA1910767A34a20F771039E37C0)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Forwarder</Table.Cell>
+      <Table.Cell>
+        [0x15e62707FCA7352fbE35F51a8D6b0F8066A05DCc](https://basescan.org/address/0x15e62707FCA7352fbE35F51a8D6b0F8066A05DCc)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>GaugeFactory</Table.Cell>
+      <Table.Cell>
+        [0x35f35cA5B132CaDf2916BaB57639128eAC5bbcb5](https://basescan.org/address/0x35f35cA5B132CaDf2916BaB57639128eAC5bbcb5)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>ManagedRewardsFactory</Table.Cell>
+      <Table.Cell>
+        [0xFdA1fb5A2a5B23638C7017950506a36dcFD2bDC3](https://basescan.org/address/0xFdA1fb5A2a5B23638C7017950506a36dcFD2bDC3)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Minter</Table.Cell>
+      <Table.Cell>
+        [0xeB018363F0a9Af8f91F06FEe6613a751b2A33FE5](https://basescan.org/address/0xeB018363F0a9Af8f91F06FEe6613a751b2A33FE5)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>PoolFactory</Table.Cell>
+      <Table.Cell>
+        [0x420DD381b31aEf6683db6B902084cB0FFECe40Da](https://basescan.org/address/0x420DD381b31aEf6683db6B902084cB0FFECe40Da)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>RewardsDistributor</Table.Cell>
+      <Table.Cell>
+        [0x227f65131A261548b057215bB1D5Ab2997964C7d](https://basescan.org/address/0x227f65131A261548b057215bB1D5Ab2997964C7d)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Router</Table.Cell>
+      <Table.Cell>
+        [0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43](https://basescan.org/address/0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Voter</Table.Cell>
+      <Table.Cell>
+        [0x16613524e02ad97eDfeF371bC883F2F5d6C480A5](https://basescan.org/address/0x16613524e02ad97eDfeF371bC883F2F5d6C480A5)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>VotingEscrow</Table.Cell>
+      <Table.Cell>
+        [0xeBf418Fe2512e7E6bd9b87a8F0f294aCDC67e6B4](https://basescan.org/address/0xeBf418Fe2512e7E6bd9b87a8F0f294aCDC67e6B4)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>VotingRewardsFactory</Table.Cell>
+      <Table.Cell>
+        [0x45cA74858C579E717ee29A86042E0d53B252B504](https://basescan.org/address/0x45cA74858C579E717ee29A86042E0d53B252B504)
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+<br />
+
+<Table striped>
+  <Table.Head>
+    <Table.HeadCell>Slipstream Contract Name</Table.HeadCell>
+    <Table.HeadCell>Address</Table.HeadCell>
+  </Table.Head>
+  <Table.Body className="font-mono">
+    <Table.Row>
+      <Table.Cell>GaugeFactory</Table.Cell>
+      <Table.Cell>
+        [0xD30677bd8dd15132F251Cb54CbDA552d2A05Fb08](https://basescan.org/address/0xD30677bd8dd15132F251Cb54CbDA552d2A05Fb08)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>GaugeImplementation</Table.Cell>
+      <Table.Cell>
+        [0xF5601F95708256A118EF5971820327F362442D2d](https://basescan.org/address/0xF5601F95708256A118EF5971820327F362442D2d)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>MixedQuoter</Table.Cell>
+      <Table.Cell>
+        [0x0A5aA5D3a4d28014f967Bf0f29EAA3FF9807D5c6](https://basescan.org/address/0x0A5aA5D3a4d28014f967Bf0f29EAA3FF9807D5c6)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>NonfungiblePositionManager</Table.Cell>
+      <Table.Cell>
+        [0x827922686190790b37229fd06084350E74485b72](https://basescan.org/address/0x827922686190790b37229fd06084350E74485b72)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>NonfungibleTokenPositionDescriptor</Table.Cell>
+      <Table.Cell>
+        [0x01b0CaCB9A8004e08D075c919B5dF3b59FD53c55](https://basescan.org/address/0x01b0CaCB9A8004e08D075c919B5dF3b59FD53c55)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>PoolFactory</Table.Cell>
+      <Table.Cell>
+        [0x5e7BB104d84c7CB9B682AaC2F3d509f5F406809A](https://basescan.org/address/0x5e7BB104d84c7CB9B682AaC2F3d509f5F406809A)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>PoolImplementation</Table.Cell>
+      <Table.Cell>
+        [0xeC8E5342B19977B4eF8892e02D8DAEcfa1315831](https://basescan.org/address/0xeC8E5342B19977B4eF8892e02D8DAEcfa1315831)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>Quoter</Table.Cell>
+      <Table.Cell>
+        [0x254cF9E1E6e233aa1AC962CB9B05b2cfeAaE15b0](https://basescan.org/address/0x254cF9E1E6e233aa1AC962CB9B05b2cfeAaE15b0)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>SwapFeeModule</Table.Cell>
+      <Table.Cell>
+        [0xF4171B0953b52Fa55462E4d76ecA1845Db69af00](https://basescan.org/address/0xF4171B0953b52Fa55462E4d76ecA1845Db69af00)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>UnstakedFeeModule</Table.Cell>
+      <Table.Cell>
+        [0x0AD08370c76Ff426F534bb2AFFD9b5555338ee68](https://basescan.org/address/0x0AD08370c76Ff426F534bb2AFFD9b5555338ee68)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>UniversalRouter</Table.Cell>
+      <Table.Cell>
+        [0x6Cb442acF35158D5eDa88fe602221b67B400Be3E](https://basescan.org/address/0x6Cb442acF35158D5eDa88fe602221b67B400Be3E)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>SwapRouter</Table.Cell>
+      <Table.Cell>
+        [0xBE6D8f0d05cC4be24d5167a3eF062215bE6D18a5](https://basescan.org/address/0xBE6D8f0d05cC4be24d5167a3eF062215bE6D18a5)
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>
+
+<br />
+
+<Table striped>
+  <Table.Head>
+    <Table.HeadCell>Misc Contract Name</Table.HeadCell>
+    <Table.HeadCell>Address</Table.HeadCell>
+  </Table.Head>
+  <Table.Body className="font-mono">
+    <Table.Row>
+      <Table.Cell>Prices Oracle</Table.Cell>
+      <Table.Cell>
+        [0xee717411f6E44F9feE011835C8E6FAaC5dEfF166](https://basescan.org/address/0xee717411f6E44F9feE011835C8E6FAaC5dEfF166)
+      </Table.Cell>
+    </Table.Row>
+    <Table.Row>
+      <Table.Cell>SlipstreamHelper</Table.Cell>
+      <Table.Cell>
+        [0x0AD09A66af0154a84e86F761313d02d0abB6edd5](https://basescan.org/address/0x0AD09A66af0154a84e86F761313d02d0abB6edd5)
+      </Table.Cell>
+    </Table.Row>
+  </Table.Body>
+</Table>

@@ -1,0 +1,112 @@
+import { Chart } from "react-google-charts";
+
+# Emissions
+
+The initial supply of `$AERO` is 500M, with 450M distributed as vote-locked
+(`$veAERO`) tokens.
+
+Weekly emissions will being at 10M `$AERO` (2% of the initial supply). The
+emission schedule will follow three phases:
+
+**Take-off**: During the first 14 weeks (epochs), emissions will increase at 3% per
+week, allowing for rapid growth in protocol activity and partner onboarding.
+
+**Cruise**: After Epoch 14, emissions will decay at 1% per epoch, ensuring total
+supply inflation decreases over time as the protocol matures.
+
+**Aero Fed**: When emissions programmatically drop under 9M per epoch,
+approximately Epoch 67, veAERO voters will take control of Aerodrome's monetary
+policy through the Aero Fed system. Voters will collectively make one of three
+choices each epoch:
+
+- Increase emissions by 0.01% of total supply (0.52% annualized)
+- Decrease emissions by 0.01% of total supply (0.52% annualized)
+- Maintain emissions unchanged as a % of total supply
+
+The winning vote will be determined by simple majority vote. If an Increase or Decrease is selected, the emission rate will change one full epoch after the vote. A max emission rate will be set at 1% of total supply per week (52% annualized) and a minimum rate at 0.01% per week (0.52% annualized).
+
+## Rebase
+
+`$veAERO` holders receive a rebase proportional to `$AERO` emissions and to the
+ratio of `$veAERO` to `$AERO` supply, reducing vote power dilution for
+`$veAERO`!
+
+<br />
+
+The weekly rebase amount is calculated with the following formula:
+
+> rebase = weeklyEmissions × (1 - veAERO.totalSupply ÷ AERO.totalsupply)ˆ2 × 0.5
+
+This rebase formula will reward `$veAERO` holders most when locking rates
+decrease, incentivizing new lockers to step in. `$veAERO` supply does not
+affect weekly emissions distributed to liquidity providers.
+
+<br />
+
+## Projected Emission Schedule
+
+**Note**: _projection below uses a 40% emissions lock rate and assumes Aero Fed keeps emissions constant_.
+
+<br />
+
+<Chart
+  chartType="LineChart"
+  data={[
+    ["Epoch", "LP Emissions", "veAERO Rebase", "Total Supply"],
+    ["1", 10, 0.05, 500],
+    ["15", 15, 0.4, 675],
+    ["30", 13, 0.65, 895],
+    ["67", 9, 0.7, 1325],
+    ["100", 9, 0.8, 1645],
+  ]}
+  options={{
+    title: "AERO Emissions, M",
+    curveType: "function",
+    aggregationTarget: "series",
+    selectionMode: "multiple",
+    series: {
+      0: { targetAxisIndex: 0 },
+      1: { targetAxisIndex: 0 },
+      2: { targetAxisIndex: 1 },
+    },
+    vAxes: {
+      1: { title: "Total Supply", titleTextStyle: { color: "#666" } },
+      0: { title: "Distribution", titleTextStyle: { color: "#666" } },
+    },
+    hAxis: {
+      title: "Epoch",
+      titleTextStyle: { color: "#000" },
+    },
+    backgroundColor: "#EBE9E4",
+    lineWidth: 3,
+    colors: ["#79F8DB", "#2180DF", "#EA1000", "#59BFD8", "#0281FF"],
+    legend: { textStyle: { color: "#666" } },
+    titleTextStyle: { color: "#666" },
+  }}
+  width={"100%"}
+  height={"600px"}
+/>
+
+<br />
+
+## Emission Rewards
+
+Each epoch, `$AERO` emissions are distributed to liquidity pools proportionally
+to the `$veAERO` voting power the pools receive.
+
+Liquidity providers (LPs) can stake their LP positions to receive a share of
+the `$AERO` distributed to each pool proportionally to the size of positions
+and time staked.
+
+These rewards are distributed during the whole epoch and available for claiming
+as these accrue.
+
+## Team Emissions
+
+While a fully autonomous and immutable protocol is an admirable objective, it
+comes at a cost. Aerodrome will ensure its long-term sustainability by
+employing a dedicated team focused on supporting the product decentralization,
+documentation, community, and ecosystem.
+
+To cover ongoing expenses and all the upcoming development efforts, 5% of the
+emissions will be going to the team address.

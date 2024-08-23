@@ -1,0 +1,103 @@
+# Liquidity Pools
+
+The core functionality of Aerodrome Finance is to allow users to exchange
+tokens in a secure way, with low fees and low slippage.
+
+Slippage is the difference between the current market price of a token and the
+price at which the actual exchange/swap is executed. This difference could
+result in a smaller amount (higher price paid) or a higher amount (smaller
+price paid) of desired tokens returned from a swap.
+
+To provide access to the best rates on the market, we identified two types of
+tokens:
+
+- correlated - for example _stable coins_ (`$USDC`, `$DAI`, etc.)
+- uncorrelated - for example `$AERO` and `$BTC`
+
+Aerodrome Finance offers two different liquidity pool types based on token pair needs, _Stable
+Pools_ and _Volatile Pools_. Aerodrome supports custom factories, so that new pool types can always be integrated.
+
+The protocol router evaluates both pool types to determine the most efficient price quotation
+and trade execution route available. To protect against flashloan attacks, the router will use
+30-minute TWAPs (time-weighted average prices). The router doesn't require _upkeep_ (external maintenance).
+
+The _deeper_ the liquidity of a given pool (higher value locked), the smaller the slippage it will offer.
+
+## Stable Pools
+
+Stable pools are designed for tokens which have little to no
+volatility. This means that the formula used for pricing the tokens allows for
+low slippage even on large traded volumes.
+
+> x³y + y³x ≥ k
+
+## Volatile Pools
+
+Volatile pools are designed for tokens with high price volatility.
+These pools use a generic AMM formula.
+
+> x × y ≥ k
+
+## A visual representation of the formulas
+
+The mathematical formulas are used to keep the total pool liquidity the same at all times.
+
+Below, you can find a visual comparison between the stable (red) and volatile (green)
+AMM pricing equations, where:
+
+- `x` is the amount of first token in the pool
+- `y` is the amount of second token in the same pool
+- `k` is a fixed constant
+
+<iframe
+  src="https://www.desmos.com/calculator/yiwx8ev1oh?embed"
+  width="100%"
+  height="700"
+></iframe>
+
+## Concentrated Pools
+
+Concentrated liquidity pools require the liquidity
+to be deposited within a specific price range and uses ticks (equally
+spaced price points) to define the range boundaries. The identifiers
+for these pools reflect their tick space. These pools require
+maintenance or automated liquidity management (ALM).
+
+## Concentrated Liquidity Tick Spacing
+
+In Velodrome's concentrated liquidity pools, the concept of **tick spacing** is used.
+This refers to the minimum price movement between liquidity ranges.
+
+Stable token pools use a price range boundary of 0.5% (tick space 50) for tokens like USDC, DAI, LUSD.
+
+Volatile token pools use a price range boundary of 2% (tick space 200) for tokens like OP and WETH.
+
+For highly correlated tokens like stable coins and liquid staked tokens,
+a price range boundary of 0.01% (tick space 1) is available.
+
+For emerging tokens like AERO and VELO, a price range boundary of 20% (tick space 2000)
+is available to reduce liquidity pool re-balance needs.
+
+Concentrated liquidity pools explain what they are in their symbol:
+
+> CL1-wstETH/WETH
+
+CL1 says that this is a concentrated pool with 1 tick spacing,
+suggesting the pool token prices are closely correlated.
+
+## Concentrated Liquidity Pool Fees
+
+Pool swap fees are redesigned to be adjusted independently from the pool type.
+Fees can now reflect partner protocols needs and can be adjusted based on the market's volatility.
+To reduce operational overhead, we are working on a dynamic fee module that will adjust itself on demand.
+
+## Calculating APRs
+
+The Annual Percentage Rate (APR) for liquidity pools in Aerodrome is calculated
+differently for basic and concentrated pools.
+
+For basic pools, the APR is calculated using the total staked liquidity.
+
+For concentrated pools, the APR is calculated using the total staked liquidity
+within the pool current price range (active tick) and the surrounding (above and below)
+price ranges (+/-1 tick from current tick).
