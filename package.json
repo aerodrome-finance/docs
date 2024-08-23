@@ -1,0 +1,19 @@
+{
+  "name": "aerodrome-docs",
+  "version": "3.0.0beta",
+  "description": "Aerodrome Finance Help Content",
+  "author": "Aerodrome Finance",
+  "license": "GPL-3.0-or-later",
+  "scripts": {
+    "dev": "island dev content --host 0.0.0.0",
+    "build": "island build content",
+    "lint": "prettier -c --write ."
+  },
+  "dependencies": {
+    "flowbite-react": "0.4.10",
+    "islandjs": "^0.7.6",
+    "prettier": "^3.3.3",
+    "react-google-charts": "^4.0.0",
+    "react-svgmt": "^1.2.0"
+  }
+}
