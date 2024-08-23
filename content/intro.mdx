@@ -1,0 +1,39 @@
+import { SvgLoader } from "react-svgmt";
+
+# About Aerodrome
+
+Aerodrome Finance is a next-generation AMM designed to serve as Base's central
+liquidity hub, combining a powerful liquidity incentive engine, vote-lock
+governance model, and friendly user experience. Aerodrome inherits the latest
+features from Velodrome V2.
+
+Aerodrome launched on <strong>28th of August, 2023</strong> on BASE network.
+
+## Aerodrome Mechanics
+
+<SvgLoader
+  path="/svg/info-graph.svg"
+  className="text-gray-900 dark:hidden mt-12 w-full"
+  viewBox="0 0 560 500"
+  preserveAspectRatio="xMidYMid meet"
+/>
+<SvgLoader
+  path="/svg/info-graph-dark.svg"
+  className="text-white hidden dark:block mt-12 w-full"
+  viewBox="0 0 560 500"
+  preserveAspectRatio="xMidYMid meet"
+/>
+
+1. The protocol is designed to enable token swaps and generate fees (from
+   **Traders**) by attracting liquidity.
+2. Every epoch liquidity providers (**LPs**) receive `$AERO` token
+   emissions proportionally to the votes the pools accumulate.
+   Only staked (in the protocol gauges) liquidity receive emissions.
+3. Participants can lock their `$AERO` to be able to vote
+   on the next epoch distribution of emissions, becoming **veAERO Voters**.
+4. **veAERO Voters** are rewarded (proportionally to locked amounts) for their
+   votes with 100% of the protocol trading fees from the previous epoch and any
+   additional voters incentives from the current epoch.
+5. An epoch is a 7-day period. It starts every Thursday at 00:00 UTC and ends
+   Wednesday at 23:59 UTC. Votes, emissions, fees, and incentives are
+   calculated for each epoch.

@@ -1,0 +1,93 @@
+import { Alert } from "flowbite-react";
+
+# Relay
+
+Relay was designed to automate the process of managing veNFTs:
+
+- users deposit their veNFTs into the available Relay strategy
+- all the voting and claiming is optimally done by the strategy automation
+- rewards are converted into the strategy asset or compounded back increasing
+  the deposited veNFT balance, all as part of the automation!
+
+<div className="pb-6 font-bold">
+  {
+    <Alert color="warning">
+      Depositing into a strategy will extend your veNFT unlock date to maximum!
+    </Alert>
+  }
+</div>
+
+Withdrawal of the veNFTs is possible only after the first week. Please make
+sure the automation was run before you withdraw, the latest update date
+should be recent.
+
+### Compounders
+
+Compounding strategies are designed to claim all the rebase and the voting
+rewards. The rewards are converted and locked back into the veNFT balances.
+
+This strategy was designed for users who want to increase their voting power!
+
+### Convertors
+
+Convertor strategies are designed to claim all the rebases and the voting
+rewards. While the rebases are compounded back into the veNFTs, the rewards
+are converted into the strategy asset (eg. USDC, OP, ETH) and are shown
+for every depositor when available for claiming.
+
+### Relays run by the Protocol
+
+The **veAERO MAXI** Relay is a compounder strategy that does the following:
+
+- Votes to optimally achieve the maximum rewards available
+- Claims the rebase
+- Claims & converts rewards into Aero
+- Locks all converted Aero increasing the locked amount of those who deposited into the Relay
+
+### Relays run by or for the Protocol Partners
+
+These Relay strategies are either run by or for the protocol partners,
+usually other protocols with the goal of supporting the partner liquidity pools.
+
+These strategies generally vote to support their own liquidity and
+thus those who deposit into those pools.
+
+In comparison to the veAERO Maxi, these relays will likely achieve smaller rewards,
+but more consistent rewards for their pools.
+
+Partner protocols can request a Relay strategy, this will soon require an open governance
+proposal to be voted and passed by the veAERO voters.
+
+Compounder strategy:
+
+- Votes on the partners chosen pool to direct emissions
+- Claims the rebase
+- Claims & converts rewards into Aero
+- Locks all converted Aero increasing the locked amount of the partners veNFT Relay position
+
+### Architecture
+
+The strategies are simple smart contracts that operate a specially managed
+veNFT, also known as (m)veNFT.
+
+The (m)veNFTs can be minted or deactivated by the protocol Governor and carry
+no voting power initially, instead, these aggregate the voting power of any
+regular deposited veNFTs. Once withdrawn, the regular veNFTs receive a share of
+the aggregated voting power and the unlock date is set to maximum.
+
+Owners of these (m)veNFTs can vote, claim rebases and collect rewards. That is
+why these are usually granted to protocols or managers of the Relay strategies.
+
+In case of an issue with one of the (m)veNFTs, these get deactivated and the
+depositors will have to withdraw safely their veNFTs.
+
+Relay was designed to solve the partner protocol needs and provide a flexible
+way to build strategies on top of (m)veNFTs. Relay strategies are automated and
+operated by a decentralized network, with the exception of the voting, which is
+handled by the (m)veNFT managers.
+
+### Governance
+
+The depositors are still able to exercise their governance voting power. The
+Governor will report the up-to-date locked amount of the veNFTs managed by a
+Relay strategy.
