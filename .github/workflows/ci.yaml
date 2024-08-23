@@ -1,0 +1,13 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Runs code QA and tests
+        run: docker run --rm -v "$(pwd):/app" -w /app -t node:lts-alpine sh -c 'yarn && yarn build'
