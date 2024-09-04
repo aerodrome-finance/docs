@@ -9,7 +9,7 @@
     "build": "island build content",
     "lint": "prettier -c --write ."
   },
-  "dependencies": {
+  "devDependencies": {
     "flowbite-react": "0.4.10",
     "islandjs": "^0.7.6",
     "prettier": "^3.3.3",
