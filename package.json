@@ -10,6 +10,7 @@
     "lint": "prettier -c --write ."
   },
   "devDependencies": {
+    "@types/mdx": "^2.0.13",
     "flowbite-react": "0.4.10",
     "islandjs": "^0.7.6",
     "prettier": "^3.3.3",

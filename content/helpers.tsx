@@ -3,11 +3,9 @@
  */
 import React from "react";
 
-import { MDXProvider } from "@mdx-js/react";
+import type { MDXComponents as MDXComponentsType } from "mdx/types";
 
-type Components = Parameters<typeof MDXProvider>[0]["components"];
-
-const MDXComponents: Components = {
+const MDXComponents: MDXComponentsType = {
   h1: (props) => (
     <h1 className="mb-6 text-2xl text-gray-600 dark:text-gray-400" {...props} />
   ),
