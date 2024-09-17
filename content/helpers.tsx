@@ -1,7 +1,13 @@
 /**
  * Formatting helpers for MDX Provider
  */
-const MDXComponents = {
+import React from "react";
+
+import { MDXProvider } from "@mdx-js/react";
+
+type Components = Parameters<typeof MDXProvider>[0]["components"];
+
+const MDXComponents: Components = {
   h1: (props) => (
     <h1 className="mb-6 text-2xl text-gray-600 dark:text-gray-400" {...props} />
   ),
