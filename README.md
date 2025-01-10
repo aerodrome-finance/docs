@@ -9,13 +9,13 @@ To contribute please make changes to the MDX files under the `content/` folder.
 
 To review your changes, start the local preview server by running:
 
-```
+```bash
 yarn && yarn dev
 ```
 
 Before submitting the changes, please run the linter:
 
-```
+```bash
 yarn && yarn lint
 ```
 

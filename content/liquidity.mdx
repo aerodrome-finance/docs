@@ -65,17 +65,19 @@ maintenance or automated liquidity management (ALM).
 
 ## Concentrated Liquidity Tick Spacing
 
-In Velodrome's concentrated liquidity pools, the concept of **tick spacing** is used.
+In Aerodrome's concentrated liquidity pools, the concept of **tick spacing** is used.
 This refers to the minimum price movement between liquidity ranges.
 
-Stable token pools use a price range boundary of 0.5% (tick space 50) for tokens like USDC, DAI, LUSD.
+For example:
 
-Volatile token pools use a price range boundary of 2% (tick space 200) for tokens like OP and WETH.
+- Stable token pools can use a price range boundary of 0.5% (tick space 50) for tokens like USDC, DAI, LUSD.
 
-For highly correlated tokens like stable coins and liquid staked tokens,
+- Volatile token pools can use a price range boundary of 1% or 2% (tick space 100 or 200) for tokens like cbBTC and WETH.
+
+- For highly correlated tokens like stable coins and liquid staked tokens,
 a price range boundary of 0.01% (tick space 1) is available.
 
-For emerging tokens like AERO and VELO, a price range boundary of 20% (tick space 2000)
+- For emerging tokens like AERO, a price range boundary of 20% (tick space 2000)
 is available to reduce liquidity pool re-balance needs.
 
 Concentrated liquidity pools explain what they are in their symbol:
@@ -99,5 +101,4 @@ differently for basic and concentrated pools.
 For basic pools, the APR is calculated using the total staked liquidity.
 
 For concentrated pools, the APR is calculated using the total staked liquidity
-within the pool current price range (active tick) and the surrounding (above and below)
-price ranges (+/-1 tick from current tick).
+within the pool current price range (active tick).
