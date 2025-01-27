@@ -13,8 +13,10 @@
     "@types/mdx": "^2.0.13",
     "flowbite-react": "0.4.10",
     "islandjs": "^0.7.6",
-    "prettier": "^3.3.3",
+    "prettier": "^3.3.3"
+  },
+  "dependencies": {
     "react-google-charts": "^4.0.0",
-    "react-svgmt": "^1.2.0"
+    "react-inlinesvg": "^4.1.3"
   }
 }
