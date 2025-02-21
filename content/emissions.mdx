@@ -1,4 +1,4 @@
-import { Chart } from "react-google-charts";
+import SVG from "react-inlinesvg";
 
 # Emissions
 
@@ -49,42 +49,9 @@ affect weekly emissions distributed to liquidity providers.
 
 <br />
 
-<Chart
-  chartType="LineChart"
-  data={[
-    ["Epoch", "LP Emissions", "veAERO Rebase", "Total Supply"],
-    ["1", 10, 0.05, 500],
-    ["15", 15, 0.4, 675],
-    ["30", 13, 0.65, 895],
-    ["67", 9, 0.7, 1325],
-    ["100", 9, 0.8, 1645],
-  ]}
-  options={{
-    title: "AERO Emissions, M",
-    curveType: "function",
-    aggregationTarget: "series",
-    selectionMode: "multiple",
-    series: {
-      0: { targetAxisIndex: 0 },
-      1: { targetAxisIndex: 0 },
-      2: { targetAxisIndex: 1 },
-    },
-    vAxes: {
-      1: { title: "Total Supply", titleTextStyle: { color: "#666" } },
-      0: { title: "Distribution", titleTextStyle: { color: "#666" } },
-    },
-    hAxis: {
-      title: "Epoch",
-      titleTextStyle: { color: "#000" },
-    },
-    backgroundColor: "#EBE9E4",
-    lineWidth: 3,
-    colors: ["#79F8DB", "#2180DF", "#EA1000", "#59BFD8", "#0281FF"],
-    legend: { textStyle: { color: "#666" } },
-    titleTextStyle: { color: "#666" },
-  }}
-  width={"100%"}
-  height={"600px"}
+<SVG
+  src="/svg/docs/chart-emissions.svg"
+  className="w-full max-w-full h-auto mt-4"
 />
 
 <br />

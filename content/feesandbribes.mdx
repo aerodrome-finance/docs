@@ -1,4 +1,4 @@
-import { Chart } from "react-google-charts";
+import SVG from "react-inlinesvg";
 
 # Voter Rewards
 
@@ -32,31 +32,7 @@ An example of incentives, voting, and rewards claim timeline:
 - Voters vote for their preferred pools
 - Once the next epoch arrives (the following Thursday), users are able to claim rewards
 
-<Chart
-  chartType="Timeline"
-  data={[
-    [
-      { type: "string", id: "Voting Round" },
-      { type: "string", id: "Action" },
-      { type: "date", id: "Start" },
-      { type: "date", id: "End" },
-    ],
-    ["Round #1", "Incentives Deposited (incl. Fees from previous Epoch), Votes Cast", new Date(2022, 5, 2), new Date(2022, 5, 8, 23, 59)],
-    ["Round #1", "Rewards Claimable", new Date(2022, 5, 9), new Date(2022, 5, 30)],
-
-    ["Round #2", "Incentives Deposited (incl. Fees from previous Epoch), Votes Cast", new Date(2022, 5, 9), new Date(2022, 5, 15, 23, 59)],
-    ["Round #2", "Rewards Claimable", new Date(2022, 5, 16), new Date(2022, 5, 30)],
-
-    ["Round #3", "Incentives Deposited (incl. Fees from previous Epoch), Votes Cast", new Date(2022, 5, 16), new Date(2022, 5, 22, 23, 59)],
-    ["Round #3", "Rewards Claimable", new Date(2022, 5, 23), new Date(2022, 5, 30)],
-
-]}
-options={{
-    title: "Incentives, Voting and Rewards Timeline",
-    colors: [
-      '#79F8DB', '#2180DF', '#EA1000', '#871000', '#59BFD8', '#0281FF',
-      '#FBBF42', '#EDE7DB'
-    ],
-  }}
-width={"100%"}
+<SVG
+  src="/svg/docs/chart-feesbribes.svg"
+  className="w-full max-w-full h-auto mt-4"
 />
