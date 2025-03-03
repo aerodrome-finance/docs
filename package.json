@@ -4,6 +4,9 @@
   "description": "Aerodrome Finance Help Content",
   "author": "Aerodrome Finance",
   "license": "GPL-3.0-or-later",
+  "engines": {
+    "node": ">=22.13.0 <23.0.0"
+  },
   "scripts": {
     "dev": "island dev content --host 0.0.0.0",
     "build": "island build content",
