@@ -1,5 +1,3 @@
-import { Table } from "flowbite-react";
-
 # Tokenomics
 
 Aerodrome Finance uses two tokens to manage its utility and governance:
@@ -30,56 +28,60 @@ on and off for each Lock (veNFT).
 
 ## Initial Distribution
 
-<br />
+{
+<table className="min-w-full w-full divide-y divide-accent-10 rounded-xl overflow-hidden bg-accent-0 mb-12">
+  <thead>
+    <tr>
+      <th className="px-6 py-3 text-left font-medium uppercase text-xs text-accent-50 w-2/3">AERO</th>
+      <th className="px-6 py-3 text-right font-medium uppercase text-xs text-accent-50">Amount</th>
+      <th className="px-6 py-3 text-right font-medium uppercase text-xs text-accent-50">Percentage</th>
+    </tr>
+  </thead>
+  <tbody className="divide-y divide-accent-10">
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Voter Incentives</td>
+      <td className="px-6 py-4 text-right">40M</td>
+      <td className="px-6 py-4 text-right">8%</td>
+    </tr>
+    <tr>
+      <td className="px-6 py-4">Genesis Liquidity Incentives</td>
+      <td className="px-6 py-4 text-right">10M</td>
+      <td className="px-6 py-4 text-right">2%</td>
+    </tr>
+  </tbody>
+</table>
+}
 
-<Table>
-  <Table.Head className="bg-gray-300 dark:bg-gray-700">
-    <Table.HeadCell className="w-3/4">AERO</Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-  </Table.Head>
-  <Table.Body className="bg-white dark:bg-gray-900">
-    <Table.Row>
-      <Table.Cell>Voter Incentives</Table.Cell>
-      <Table.Cell>40M</Table.Cell>
-      <Table.Cell>8%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Genesis Liquidity Incentives</Table.Cell>
-      <Table.Cell>10M</Table.Cell>
-      <Table.Cell>2%</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
-
-<br />
-
-<Table>
-  <Table.Head className="bg-gray-300 dark:bg-gray-700">
-    <Table.HeadCell className="w-3/4">veAERO</Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-    <Table.HeadCell></Table.HeadCell>
-  </Table.Head>
-  <Table.Body className="bg-white dark:bg-gray-900">
-    <Table.Row>
-      <Table.Cell>Airdrop for veVELO Lockers</Table.Cell>
-      <Table.Cell>200M</Table.Cell>
-      <Table.Cell>40%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Public Goods Fund (Auto Max-Locked)</Table.Cell>
-      <Table.Cell>105M</Table.Cell>
-      <Table.Cell>21%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Foundation (Auto Max-Locked)</Table.Cell>
-      <Table.Cell>95M</Table.Cell>
-      <Table.Cell>19%</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>Flight School (Auto Max-Locked)</Table.Cell>
-      <Table.Cell>50M</Table.Cell>
-      <Table.Cell>10%</Table.Cell>
-    </Table.Row>
-  </Table.Body>
-</Table>
+{
+<table className="min-w-full w-full divide-y divide-accent-10 rounded-xl overflow-hidden bg-accent-0 mb-12">
+  <thead>
+    <tr>
+      <th className="px-6 py-3 text-left font-medium uppercase text-xs text-accent-50 w-2/3">veAERO</th>
+      <th className="px-6 py-3 text-right font-medium uppercase text-xs text-accent-50">Amount</th>
+      <th className="px-6 py-3 text-right font-medium uppercase text-xs text-accent-50">Percentage</th>
+    </tr>
+  </thead>
+  <tbody className="divide-y divide-accent-10">
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Airdrop for veVELO Lockers</td>
+      <td className="px-6 py-4 text-right">200M</td>
+      <td className="px-6 py-4 text-right">40%</td>
+    </tr>
+    <tr>
+      <td className="px-6 py-4">Public Goods Fund (Auto Max-Locked)</td>
+      <td className="px-6 py-4 text-right">105M</td>
+      <td className="px-6 py-4 text-right">21%</td>
+    </tr>
+    <tr className="bg-accent-5">
+      <td className="px-6 py-4">Foundation (Auto Max-Locked)</td>
+      <td className="px-6 py-4 text-right">95M</td>
+      <td className="px-6 py-4 text-right">19%</td>
+    </tr>
+    <tr>
+      <td className="px-6 py-4">Flight School (Auto Max-Locked)</td>
+      <td className="px-6 py-4 text-right">50M</td>
+      <td className="px-6 py-4 text-right">10%</td>
+    </tr>
+  </tbody>
+</table>
+}

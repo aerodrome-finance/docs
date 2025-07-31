@@ -1,5 +1,3 @@
-import { Alert } from "flowbite-react";
-
 # Relay
 
 Relay was designed to automate the process of managing veNFTs:
@@ -9,13 +7,11 @@ Relay was designed to automate the process of managing veNFTs:
 - rewards are converted into the strategy asset or compounded back increasing
   the deposited veNFT balance, all as part of the automation!
 
-<div className="pb-6 font-bold">
-  {
-    <Alert color="warning">
-      Depositing into a strategy will extend your veNFT unlock date to maximum!
-    </Alert>
-  }
+{
+<div className="text-amber bg-amber/10 p-4 rounded-xl">
+  Depositing into a strategy will extend your veNFT unlock date to maximum!
 </div>
+}
 
 Withdrawal of the veNFTs is possible only after the first week. Please make
 sure the automation was run before you withdraw, the latest update date
