@@ -92,13 +92,22 @@ Pool swap fees are redesigned to be adjusted independently from the pool type.
 Fees can now reflect partner protocols needs and can be adjusted based on the market's volatility.
 To reduce operational overhead, we are working on a dynamic fee module that will adjust itself on demand.
 
-## Calculating APRs
+## Staking APRs
 
-The Annual Percentage Rate (APR) for liquidity pools in Aerodrome is calculated
-differently for basic and concentrated pools.
+The Annual Percentage Rate (APR) for liquidity pools is calculated
+differently for basic and concentrated pools when staking is available.
 
 For basic pools, the APR is calculated using the total staked liquidity.
 
 For concentrated pools, the APR is calculated using the total staked liquidity
-within the pool current price range (active tick) and the surrounding (above and below)
-price ranges (+/-1 tick from current tick).
+within the pool current price range (active tick) and the surrounding (above
+and below) price ranges (+/-1 tick from current tick).
+
+## Fee APRs
+
+Fee APRs for pools with staking available are based on the accrued swap fee
+amounts for the ongoing epoch (7 days).
+
+For the pools where staking is not available, the APRs are calculated as
+averages for the entire pool lifetime and total accrued swap fees in the same
+time.
