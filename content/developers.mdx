@@ -1,0 +1,198 @@
+# Developer Quickstart
+
+This page gives builders a minimal path for reading Aerodrome pool data and
+quoting swaps from an application, bot, or script. It focuses on public reads
+and quote calls. Transactions should always add application-level checks for
+allowances, slippage, deadlines, recipient addresses, and token behavior.
+
+## Canonical sources
+
+Use the deployment tables in the contract repositories as the source of truth
+when configuring an integration:
+
+- [Protocol contracts](https://github.com/aerodrome-finance/contracts#deployment)
+- [Slipstream contracts](https://github.com/aerodrome-finance/slipstream#deployments)
+
+The examples below use Base mainnet and `viem`.
+
+```ts
+import {
+  createPublicClient,
+  formatUnits,
+  http,
+  parseAbi,
+  parseUnits,
+} from "viem";
+import { base } from "viem/chains";
+
+const client = createPublicClient({
+  chain: base,
+  transport: http(process.env.BASE_RPC_URL),
+});
+```
+
+## Common addresses
+
+Check the deployment tables before shipping changes. These addresses are the
+core protocol contracts most integrations need first.
+
+```ts
+const AERODROME = {
+  router: "0xcF77a3Ba9A5CA399B7c97c74d54e5b1Beb874E43",
+  poolFactory: "0x420DD381b31aEf6683db6B902084cB0FFECe40Da",
+  aero: "0x940181a94A35A4569E4529A3CDfB74e38FD98631",
+} as const;
+
+const TOKENS = {
+  weth: "0x4200000000000000000000000000000000000006",
+  usdc: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+} as const;
+```
+
+## Discover a basic pool
+
+Basic pools are either stable or volatile. Query both options and use the
+non-zero pool address that matches the route you want.
+
+```ts
+const poolFactoryAbi = parseAbi([
+  "function getPool(address tokenA, address tokenB, bool stable) view returns (address)",
+]);
+
+const ZERO_ADDRESS = "0x0000000000000000000000000000000000000000";
+
+async function findBasicPool(tokenA: `0x${string}`, tokenB: `0x${string}`) {
+  const [stablePool, volatilePool] = await Promise.all([
+    client.readContract({
+      address: AERODROME.poolFactory,
+      abi: poolFactoryAbi,
+      functionName: "getPool",
+      args: [tokenA, tokenB, true],
+    }),
+    client.readContract({
+      address: AERODROME.poolFactory,
+      abi: poolFactoryAbi,
+      functionName: "getPool",
+      args: [tokenA, tokenB, false],
+    }),
+  ]);
+
+  return [
+    { stable: true, pool: stablePool },
+    { stable: false, pool: volatilePool },
+  ].filter(({ pool }) => pool !== ZERO_ADDRESS);
+}
+
+const pools = await findBasicPool(TOKENS.weth, TOKENS.usdc);
+console.log(pools);
+```
+
+## Read pool metadata
+
+`metadata()` returns token addresses, reserves, decimal scaling factors, and
+whether the pool is stable. Use it to verify that your UI or route builder is
+reading the pool you expected.
+
+```ts
+const poolAbi = parseAbi([
+  "function metadata() view returns (uint256 dec0, uint256 dec1, uint256 r0, uint256 r1, bool st, address t0, address t1)",
+]);
+
+async function describePool(pool: `0x${string}`) {
+  const [dec0, dec1, reserve0, reserve1, stable, token0, token1] =
+    await client.readContract({
+      address: pool,
+      abi: poolAbi,
+      functionName: "metadata",
+    });
+
+  return { dec0, dec1, reserve0, reserve1, stable, token0, token1 };
+}
+```
+
+## Quote a basic route
+
+For basic pools, `Router.getAmountsOut` accepts one or more route legs. Each
+leg identifies the input token, output token, stable flag, and factory.
+
+```ts
+const routerAbi = parseAbi([
+  "function getAmountsOut(uint256 amountIn, (address from, address to, bool stable, address factory)[] routes) view returns (uint256[] amounts)",
+]);
+
+async function quoteBasicSwap({
+  tokenIn,
+  tokenOut,
+  amountIn,
+  stable,
+}: {
+  tokenIn: `0x${string}`;
+  tokenOut: `0x${string}`;
+  amountIn: bigint;
+  stable: boolean;
+}) {
+  const amounts = await client.readContract({
+    address: AERODROME.router,
+    abi: routerAbi,
+    functionName: "getAmountsOut",
+    args: [
+      amountIn,
+      [
+        {
+          from: tokenIn,
+          to: tokenOut,
+          stable,
+          factory: AERODROME.poolFactory,
+        },
+      ],
+    ],
+  });
+
+  return amounts[amounts.length - 1];
+}
+
+const discovered = await findBasicPool(TOKENS.weth, TOKENS.usdc);
+const route = discovered[0];
+
+if (!route) {
+  throw new Error("No basic WETH/USDC pool found");
+}
+
+const amountOut = await quoteBasicSwap({
+  tokenIn: TOKENS.weth,
+  tokenOut: TOKENS.usdc,
+  amountIn: parseUnits("1", 18),
+  stable: route.stable,
+});
+
+console.log(formatUnits(amountOut, 6));
+```
+
+## Concentrated liquidity notes
+
+Concentrated pools use Slipstream contracts instead of the basic pool factory.
+Their symbols include the tick spacing, such as `CL1-wstETH/WETH`, where `1`
+means the pool uses tick spacing `1`.
+
+Common tick spacing choices are:
+
+- `1` for highly correlated pairs
+- `50` for stable pairs
+- `200` for volatile pairs
+- `2000` for wider emerging-token ranges
+
+When integrating concentrated liquidity, use the Slipstream deployment table
+for the current position manager, routers, quoters, and pool factories.
+
+## Integration checklist
+
+- Resolve addresses from the official deployment tables.
+- Detect whether a route uses a basic or concentrated pool before choosing a
+  router or quoter.
+- For basic pools, query both stable and volatile pool variants.
+- Set user-visible slippage limits and transaction deadlines.
+- Check token decimals before formatting reserves or quote outputs.
+- Treat quote calls as estimates. Re-quote close to transaction submission.
+- Use `approve` or permit flows before swaps or liquidity actions.
+- Send LP tokens and Slipstream position NFTs through the documented deposit
+  and staking flows instead of direct token transfers.
